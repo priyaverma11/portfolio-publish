@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya Verma - Analyst Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: linear-gradient(to bottom, #fef5f6, #ffffff);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #c9949d;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: #6b7280;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            font-size: 1.15em;
+            color: #4b5563;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #c9949d;
+            margin-bottom: 15px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #6b7280;
+            font-size: 1.1em;
+        }
+
+        /* Value Cards */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 2px 20px rgba(201, 148, 157, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(201, 148, 157, 0.1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(201, 148, 157, 0.15);
+        }
+
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f8e8eb, #fdf5f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .value-card p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #f8e8eb, #c9949d);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 11px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #c9949d;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
+            border-left: 4px solid #c9949d;
+        }
+
+        .role-header {
+            margin-bottom: 20px;
+        }
+
+        .role-title {
+            font-size: 1.4em;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .company-name {
+            color: #c9949d;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .duration {
+            color: #9ca3af;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .context-block {
+            background: #fef5f6;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 3px solid #e8c3ca;
+        }
+
+        .context-block strong {
+            color: #c9949d;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .impact-list {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .impact-list li {
+            color: #4b5563;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .impact-list li::marker {
+            color: #c9949d;
+        }
+
+        .highlight-skill {
+            background: #fef5f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #c9949d;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-group {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
+        }
+
+        .skill-group h3 {
+            color: #c9949d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: #fef5f6;
+            color: #6b7280;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #f8e8eb;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: #f8e8eb;
+            border-color: #c9949d;
+            color: #c9949d;
+        }
+
+        /* Role Fit Section */
+        .role-fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .role-fit-card {
+            background: linear-gradient(135deg, #ffffff, #fef5f6);
+            padding: 35px;
+            border-radius: 16px;
+            border: 2px solid #f8e8eb;
+            transition: all 0.3s ease;
+        }
+
+        .role-fit-card:hover {
+            border-color: #c9949d;
+            transform: translateY(-5px);
+        }
+
+        .role-fit-card h3 {
+            color: #c9949d;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .role-fit-card ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .role-fit-card li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+            color: #4b5563;
+        }
+
+        .role-fit-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #c9949d;
+        }
+
+        /* Philosophy Section */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .philosophy-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border-left: 4px solid #c9949d;
+            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
+        }
+
+        .philosophy-card h3 {
+            color: #2d3748;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .philosophy-card p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #c9949d, #b08089);
+            border-radius: 24px;
+            margin: 80px 0;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #c9949d;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .education-card {
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
+            border-left: 4px solid #c9949d;
+        }
+
+        .degree-title {
+            font-size: 1.3em;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .institution {
+            color: #c9949d;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        /* Achievements */
+        .achievement-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #fef5f6, #f8e8eb);
+            color: #c9949d;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            border: 1px solid #f8e8eb;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            .hero { min-height: 60vh; }
+            section { padding: 50px 0; }
+            .timeline::before { left: 10px; }
+            .timeline-item { padding-left: 50px; }
+            .timeline-dot { left: 1px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Priya Verma</h1>
+                <p class="hero-subtitle">Analyst</p>
+                <p class="hero-description">I find clarity in complexity. Whether it's analyzing data to uncover patterns, translating requirements between teams, or improving operational workflows — I focus on understanding how systems work and making them better.</p>
+                <p class="hero-description">My background spans computer science, IT management, and hands-on work across data, business processes, and operations. What drives me is the work itself: asking the right questions, mapping dependencies, and delivering insights that teams can act on.</p>
+            </div>
+        </div>
+
+        <!-- Value Section -->
+        <section>
+            <h2>How I Create Value</h2>
+            <p class="section-intro">Good analysis isn't just about tools or techniques — it's about bringing the right kind of clarity at the right time.</p>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">📊</div>
+                    <h3>Data Clarity</h3>
+                    <p>I analyze data to find patterns, validate assumptions, and build insights that guide decisions. I write SQL to investigate discrepancies, use Python to automate reporting, and create dashboards that teams actually reference.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <h3>Process Clarity</h3>
+                    <p>I map workflows, identify bottlenecks, and design automation that reduces manual effort. Whether it's documenting requirements or building Zapier integrations, I focus on making operations more reliable and scalable.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💬</div>
+                    <h3>Communication Clarity</h3>
+                    <p>I translate technical constraints into business language and business needs into technical requirements. I've coordinated across engineering, cybersecurity, marketing, and client teams — always focused on keeping everyone aligned.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section>
+            <h2>Professional Experience</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="experience-card">
+                        <div class="role-header">
+                            <div class="role-title">IT Systems Analyst</div>
+                            <div class="company-name">BuzzClan</div>
+                            <div class="duration">Recent</div>
+                        </div>
+                        
+                        <div class="context-block">
+                            <strong>Context:</strong>
+                            Large-scale migration from SharePoint On-Prem to SharePoint 365 for Minnesota State of Corrections — a state-level client requiring zero tolerance for data loss or functional gaps.
+                        </div>
+                        
+                        <p><strong>My Role:</strong> Partnered with developers to validate every aspect of the migration. Created comprehensive test cases, verified workflows, InfoPath forms, and data integrity post-migration.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Designed test logic to ensure functional parity between on-prem and cloud environments</li>
+                            <li>Created workflows and validation processes using <span class="highlight-skill">SharePoint Designer</span></li>
+                            <li>Validated data accuracy, content structure, and business continuity</li>
+                            <li>Acted as quality assurance layer ensuring compliance and reliability for government client</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px;"><strong>Impact:</strong> Zero critical issues during go-live. Migration completed on schedule with full stakeholder confidence.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="experience-card">
+                        <div class="role-header">
+                            <div class="role-title">Operations Associate → Data Operations Analyst</div>
+                            <div class="company-name">Lantern</div>
+                            <div class="duration">~1 year</div>
+                        </div>
+                        
+                        <div class="context-block">
+                            <strong>Context:</strong>
+                            Healthcare analytics company delivering encrypted, sensitive client reports. Started handling escalations; promoted to Data Operations within 3 months.
+                        </div>
+                        
+                        <p><strong>Phase 1 — Operations:</strong></p>
+                        <ul class="impact-list">
+                            <li>Investigated database discrepancies and verified report delivery timelines</li>
+                            <li>Performed root cause analysis using <span class="highlight-skill">SQL queries</span></li>
+                            <li>Determined issue ownership (internal vs. client-side)</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px;"><strong>Phase 2 — Data Operations (Promoted):</strong></p>
+                        <ul class="impact-list">
+                            <li>Generated encrypted client reports manually, then co-created <span class="highlight-skill">SQL automation logic</span> to replace weekly manual processes</li>
+                            <li>Built internal dashboards to track active projects, current work, and future workload</li>
+                            <li>Took ownership of company's largest client within 3 months of promotion</li>
+                            <li>Managed direct client communication, debugged SQL logic, and coordinated with CST/marketing teams</li>
+                            <li>Used <span class="highlight-skill">Databricks</span> for data processing and analytics workflows</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px;"><strong>Impact:</strong> Reduced manual reporting effort by 70%, improved reliability, earned trust to manage high-stakes client relationships early.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="experience-card">
+                        <div class="role-header">
+                            <div class="role-title">Analyst Intern</div>
+                            <div class="company-name">Tenet Health</div>
+                            <div class="duration">Summer 2023</div>
+                        </div>
+                        
+                        <p>Worked across Project Management, Cybersecurity, and ITSM teams as central coordination point.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Built and analyzed workflows using <span class="highlight-skill">ServiceNow</span></li>
+                            <li>Performed data analysis using <span class="highlight-skill">Excel, Python, and SQL</span> to support project decisions</li>
+                            <li>Created charts and insights for retrospective project analysis</li>
+                            <li>Identified gaps, risks, and improvement opportunities across past initiatives</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px;"><strong>Impact:</strong> Helped three teams stay aligned through clear documentation and data-driven insights.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="experience-card">
+                        <div class="role-header">
+                            <div class="role-title">Business Analyst</div>
+                            <div class="company-name">Wipro Limited</div>
+                            <div class="duration">~2.5 years</div>
+                        </div>
+                        
+                        <p>Worked across multiple teams in large enterprise environment focused on requirements, documentation, and stakeholder alignment.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Gathered requirements and translated technical constraints into business-friendly explanations</li>
+                            <li>Created workflow documentation and process maps</li>
+                            <li>Supported automation initiatives and third-party coordination</li>
+                            <li>Contributed to cost savings through improved clarity and alignment</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px;"><strong>Impact:</strong> Learned how to bridge technical and business stakeholders in complex, multi-team environments.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="experience-card">
+                        <div class="role-header">
+                            <div class="role-title">Business & Sales Analysis</div>
+                            <div class="company-name">Kalachandji's Café</div>
+                            <div class="duration">Part-Time</div>
+                        </div>
+                        
+                        <p>Applied analytics in real-world small business context.</p>
+                        
+                        <ul class="impact-list">
+                            <li>Conducted sales, pricing, and inventory analysis using <span class="highlight-skill">Excel</span></li>
+                            <li>Compared inventory vs. sales vs. profit/loss to identify trends</li>
+                            <li>Partnered with café manager on pricing strategy and promotional ideas</li>
+                        </ul>
+                        
+                        <p style="margin-top: 20px;"><strong>Impact:</strong> Delivered actionable insights that directly influenced day-to-day business decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Role Fit Section -->
+        <section>
+            <h2>Why I Fit Multiple Analyst Roles</h2>
+            <p class="section-intro">Good analysts don't live in silos. The same mindset that helps me analyze data also helps me map processes and translate requirements.</p>
+            
+            <div class="role-fit-grid">
+                <div class="role-fit-card">
+                    <h3>Data Analyst</h3>
+                    <ul>
+                        <li>Write and debug SQL to investigate discrepancies</li>
+                        <li>Build Python scripts for data processing and reporting</li>
+                        <li>Create dashboards that teams actually use</li>
+                        <li>Use Databricks for analytics workflows</li>
+                        <li>Turn raw data into actionable insights</li>
+                    </ul>
+                </div>
+                
+                <div class="role-fit-card">
+                    <h3>Business Analyst</h3>
+                    <ul>
+                        <li>Gather and document requirements clearly</li>
+                        <li>Translate between technical and business stakeholders</li>
+                        <li>Map workflows and identify process gaps</li>
+                        <li>Coordinate across multiple teams and functions</li>
+                        <li>Balance technical feasibility with business needs</li>
+                    </ul>
+                </div>
+                
+                <div class="role-fit-card">
+                    <h3>Operations Analyst</h3>
+                    <ul>
+                        <li>Design and implement process automation</li>
+                        <li>Build reporting pipelines using Zapier and SQL</li>
+                        <li>Handle escalations and root cause analysis</li>
+                        <li>Improve operational clarity and reliability</li>
+                        <li>Reduce manual effort through thoughtful automation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section>
+            <h2>Skills & Tools</h2>
+            <p class="section-intro">I focus on using the right tools thoughtfully, not just knowing them.</p>
+            
+            <div class="skills-container">
+                <div class="skill-group">
+                    <h3>Data & Analytics</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Excel (Advanced)</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+                
+                <div class="skill-group">
+                    <h3>Automation & Systems</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Zapier</span>
+                        <span class="skill-tag">Process Automation</span>
+                        <span class="skill-tag">Workflow Design</span>
+                        <span class="skill-tag">Logic Creation</span>
+                    </div>
+                </div>
+                
+                <div class="skill-group">
+                    <h3>Platforms & Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">ServiceNow</span>
+                        <span class="skill-tag">SharePoint</span>
+                        <span class="skill-tag">SharePoint 365</span>
+                        <span class="skill-tag">Dashboard Tools</span>
+                    </div>
+                </div>
+                
+                <div class="skill-group">
+                    <h3>Business & Communication</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Requirements Gathering</span>
+                        <span class="skill-tag">Process Mapping</span>
+                        <span class="skill-tag">Stakeholder Coordination</span>
+                        <span class="skill-tag">Client Communication</span>
+                        <span class="skill-tag">Technical Translation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2>Education</h2>
+            
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="degree-title">Master's in Information Technology & Management</div>
+                    <div class="institution">The University of Texas at Dallas</div>
+                    <p style="color: #6b7280;">Built on technical foundation with business and IT management focus. Learned to bridge technical execution with organizational strategy.</p>
+                </div>
+                
+                <div class="education-card">
+                    <div class="degree-title">Bachelor's in Computer Science & Engineering</div>
+                    <div class="institution">Chitkara University, India</div>
+                    <p style="color: #6b7280;">Developed core programming, systems thinking, and problem-solving skills that continue to shape how I approach technical challenges.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section>
+            <h2>Growth & Recognition</h2>
+            <div class="achievement-badges">
+                <span class="badge">Promoted within 3 months</span>
+                <span class="badge">Trusted with largest client account</span>
+                <span class="badge">Built automation reducing 70% manual effort</span>
+                <span class="badge">Led state-level migration validation</span>
+                <span class="badge">Managed direct client communication early</span>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: #6b7280; max-width: 700px; margin-left: auto; margin-right: auto;">What matters isn't just the titles — it's the moments when teams trusted me with sensitive work early, when clients felt comfortable reaching out directly, and when I could see the impact of bringing clarity to something previously unclear.</p>
+        </section>
+
+        <!-- Philosophy -->
+        <section>
+            <h2>How I Work</h2>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3>On Responsibility</h3>
+                    <p>When something's in my hands, I treat it like it matters. I communicate proactively, ask for help when needed, and make sure stakeholders are never surprised.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <h3>On Learning</h3>
+                    <p>I don't need to know everything upfront, but I need to understand it before I execute. I ask questions, take notes, and connect dots until systems make sense.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <h3>On Feedback</h3>
+                    <p>I appreciate teams that are direct. I'd rather know what needs improvement than guess. Feedback helps me recalibrate and do better work.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <h3>Where I Thrive</h3>
+                    <p>Teams that value clarity, encourage questions, trust people with meaningful work, and care about both technical quality and human impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Let's Connect</h2>
+            <p>I'm looking for teams where I can contribute thoughtful analysis, clear communication, and reliable execution — whether that's as a Data Analyst, Business Analyst, or Operations Analyst.</p>
+            <p>If you think I might be a good fit for your team, I'd love to hear from you.</p>
+            <div class="cta-buttons">
+                <a href="mailto:your.email@example.com" class="cta-btn">Email Me</a>
+                <a href="https://linkedin.com/in/yourprofile" class="cta-btn">LinkedIn</a>
+            </div>
+        </div>
+    </div>
