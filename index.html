@@ -3,794 +3,1358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priya Verma - Analyst Portfolio</title>
+    <title>Priya Verma | Data & Analytics Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --accent-primary: #6366f1;
+            --accent-secondary: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(255, 255, 255, 0.06);
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --gradient-2: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: #2d3748;
-            background: linear-gradient(to bottom, #fef5f6, #ffffff);
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1000px;
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+            bottom: 20%;
+            left: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+            top: 50%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(-30px, -20px) scale(1.02); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Main Content */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 80vh;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
+            padding-top: 100px;
         }
 
-        .hero-content {
-            max-width: 700px;
-            animation: fadeIn 1.2s ease-out;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-secondary);
+            margin-bottom: 1.5rem;
+            width: fit-content;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        h1 {
-            font-size: 3.5em;
-            color: #c9949d;
-            margin-bottom: 20px;
-            font-weight: 300;
-            letter-spacing: -2px;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
-            font-size: 1.5em;
-            color: #6b7280;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        .hero-description {
-            font-size: 1.15em;
-            color: #4b5563;
-            line-height: 1.9;
-            margin-bottom: 15px;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            font-size: 2.5em;
-            color: #c9949d;
-            margin-bottom: 15px;
-            font-weight: 300;
-            text-align: center;
-        }
-
-        .section-intro {
-            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 50px;
-            color: #6b7280;
-            font-size: 1.1em;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
         }
 
-        /* Value Cards */
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+        .hero-roles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
         }
 
-        .value-card {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 2px 20px rgba(201, 148, 157, 0.08);
+        .role-tag {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
             transition: all 0.3s ease;
-            border: 1px solid rgba(201, 148, 157, 0.1);
         }
 
-        .value-card:hover {
+        .role-tag:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border);
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Role Fit Section */
+        .role-fit {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 2rem 0;
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .role-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .role-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(201, 148, 157, 0.15);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
         }
 
-        .value-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #f8e8eb, #fdf5f6);
-            border-radius: 12px;
+        .role-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-glow);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        .value-card h3 {
-            color: #2d3748;
-            font-size: 1.3em;
-            margin-bottom: 12px;
-            font-weight: 500;
+        .role-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
         }
 
-        .value-card p {
-            color: #6b7280;
-            line-height: 1.7;
+        .role-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            margin-top: 60px;
+        .role-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #f8e8eb, #c9949d);
+        .role-skill {
+            padding: 0.4rem 0.8rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--accent-secondary);
         }
 
-        .timeline-item {
-            position: relative;
-            padding-left: 70px;
-            margin-bottom: 60px;
+        /* Experience Section */
+        .experience-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
-        .timeline-dot {
-            position: absolute;
-            left: 11px;
-            top: 5px;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 3px solid #c9949d;
-            border-radius: 50%;
-            z-index: 1;
+        .exp-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
-        .experience-card {
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
-            border-left: 4px solid #c9949d;
+        .exp-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(8px);
         }
 
-        .role-header {
-            margin-bottom: 20px;
+        .exp-meta {
+            border-right: 1px solid var(--border);
+            padding-right: 2rem;
         }
 
-        .role-title {
-            font-size: 1.4em;
-            color: #2d3748;
+        .exp-company {
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
         }
 
-        .company-name {
-            color: #c9949d;
-            font-size: 1.1em;
-            font-weight: 500;
+        .exp-role {
+            color: var(--accent-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
         }
 
-        .duration {
-            color: #9ca3af;
-            font-size: 0.95em;
-            margin-top: 5px;
+        .exp-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
-        .context-block {
-            background: #fef5f6;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 3px solid #e8c3ca;
+        .exp-location {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.25rem;
         }
 
-        .context-block strong {
-            color: #c9949d;
-            display: block;
-            margin-bottom: 8px;
+        .exp-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
         }
 
-        .impact-list {
-            margin-left: 20px;
-            margin-top: 15px;
+        .exp-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .impact-list li {
-            color: #4b5563;
-            margin-bottom: 12px;
-            line-height: 1.8;
+        .exp-highlights li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-left: 1.5rem;
+            position: relative;
         }
 
-        .impact-list li::marker {
-            color: #c9949d;
+        .exp-highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
         }
 
-        .highlight-skill {
-            background: #fef5f6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            color: #c9949d;
-            font-weight: 500;
+        .exp-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .metric {
+            padding: 0.5rem 1rem;
+            background: var(--accent-glow);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        .metric-value {
+            color: var(--accent-secondary);
+            font-weight: 600;
         }
 
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
         }
 
-        .skill-group {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
         }
 
-        .skill-group h3 {
-            color: #c9949d;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            font-weight: 500;
+        .skill-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .skill-items {
+        .skill-category-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.25rem;
+        }
+
+        .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 0.75rem;
         }
 
         .skill-tag {
-            background: #fef5f6;
-            color: #6b7280;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            border: 1px solid #f8e8eb;
-            transition: all 0.2s ease;
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
-            background: #f8e8eb;
-            border-color: #c9949d;
-            color: #c9949d;
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
         }
 
-        /* Role Fit Section */
-        .role-fit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+        .skill-tag.highlight {
+            background: var(--accent-glow);
+            border-color: rgba(99, 102, 241, 0.3);
+            color: var(--accent-secondary);
         }
 
-        .role-fit-card {
-            background: linear-gradient(135deg, #ffffff, #fef5f6);
-            padding: 35px;
-            border-radius: 16px;
-            border: 2px solid #f8e8eb;
-            transition: all 0.3s ease;
-        }
-
-        .role-fit-card:hover {
-            border-color: #c9949d;
-            transform: translateY(-5px);
-        }
-
-        .role-fit-card h3 {
-            color: #c9949d;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-        }
-
-        .role-fit-card ul {
-            list-style: none;
-            margin: 0;
-        }
-
-        .role-fit-card li {
-            padding-left: 25px;
-            position: relative;
-            margin-bottom: 10px;
-            color: #4b5563;
-        }
-
-        .role-fit-card li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #c9949d;
-        }
-
-        /* Philosophy Section */
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .philosophy-card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            border-left: 4px solid #c9949d;
-            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
-        }
-
-        .philosophy-card h3 {
-            color: #2d3748;
-            font-size: 1.1em;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .philosophy-card p {
-            color: #6b7280;
-            line-height: 1.8;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 80px 40px;
-            background: linear-gradient(135deg, #c9949d, #b08089);
+        /* AI Tools Section */
+        .ai-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
             border-radius: 24px;
-            margin: 80px 0;
-            color: white;
+            padding: 3rem;
+            margin: 4rem 0;
         }
 
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.2em;
-            margin-bottom: 35px;
-            opacity: 0.95;
-        }
-
-        .cta-buttons {
+        .ai-header {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .cta-btn {
-            background: white;
-            color: #c9949d;
-            padding: 14px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-block;
+        .ai-header h3 {
+            font-size: 1.5rem;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Education */
-        .education-grid {
-            display: grid;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .education-card {
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 2px 15px rgba(201, 148, 157, 0.08);
-            border-left: 4px solid #c9949d;
-        }
-
-        .degree-title {
-            font-size: 1.3em;
-            color: #2d3748;
+        .ai-badge {
+            padding: 0.4rem 1rem;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 8px;
         }
 
-        .institution {
-            color: #c9949d;
-            font-size: 1.1em;
-            margin-bottom: 15px;
+        .ai-tools {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
 
-        /* Achievements */
-        .achievement-badges {
+        .ai-tool {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-tool:hover {
+            transform: translateY(-4px);
+        }
+
+        .ai-tool-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--bg-secondary);
+            border-radius: 50%;
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
+            align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
         }
 
-        .badge {
-            background: linear-gradient(135deg, #fef5f6, #f8e8eb);
-            color: #c9949d;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-size: 0.95em;
-            border: 1px solid #f8e8eb;
-            font-weight: 500;
+        .ai-tool h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .ai-tool p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Education Section */
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .edu-degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-school {
+            color: var(--accent-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-details {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent-primary);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .contact-link span {
+            font-size: 1.25rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .role-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-tools {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .exp-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .exp-meta {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding-right: 0;
+                padding-bottom: 1.5rem;
+            }
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 2em; }
-            .hero { min-height: 60vh; }
-            section { padding: 50px 0; }
-            .timeline::before { left: 10px; }
-            .timeline-item { padding-left: 50px; }
-            .timeline-dot { left: 1px; }
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .education-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-tools {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .role-fit {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Priya Verma</h1>
-                <p class="hero-subtitle">Analyst</p>
-                <p class="hero-description">I find clarity in complexity. Whether it's analyzing data to uncover patterns, translating requirements between teams, or improving operational workflows — I focus on understanding how systems work and making them better.</p>
-                <p class="hero-description">My background spans computer science, IT management, and hands-on work across data, business processes, and operations. What drives me is the work itself: asking the right questions, mapping dependencies, and delivering insights that teams can act on.</p>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">PV</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#roles">Role Fit</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
+    </nav>
 
-        <!-- Value Section -->
-        <section>
-            <h2>How I Create Value</h2>
-            <p class="section-intro">Good analysis isn't just about tools or techniques — it's about bringing the right kind of clarity at the right time.</p>
-            
-            <div class="value-grid">
-                <div class="value-card">
-                    <div class="value-icon">📊</div>
-                    <h3>Data Clarity</h3>
-                    <p>I analyze data to find patterns, validate assumptions, and build insights that guide decisions. I write SQL to investigate discrepancies, use Python to automate reporting, and create dashboards that teams actually reference.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🔄</div>
-                    <h3>Process Clarity</h3>
-                    <p>I map workflows, identify bottlenecks, and design automation that reduces manual effort. Whether it's documenting requirements or building Zapier integrations, I focus on making operations more reliable and scalable.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">💬</div>
-                    <h3>Communication Clarity</h3>
-                    <p>I translate technical constraints into business language and business needs into technical requirements. I've coordinated across engineering, cybersecurity, marketing, and client teams — always focused on keeping everyone aligned.</p>
-                </div>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-badge">
+                <span>Open to Opportunities</span>
             </div>
-        </section>
+            <h1>Hi, I'm <span>Priya Verma</span></h1>
+            <p class="hero-subtitle">
+                Data & Analytics Professional with 4+ years of experience transforming complex datasets into 
+                strategic business intelligence. I bridge the gap between raw data and actionable decisions 
+                through automated pipelines, insightful dashboards, and clear stakeholder communication.
+            </p>
+            <div class="hero-roles">
+                <span class="role-tag">Data Analyst</span>
+                <span class="role-tag">Business Analyst</span>
+                <span class="role-tag">Operations Analyst</span>
+                <span class="role-tag">Senior Analyst Roles</span>
+            </div>
+            <div class="hero-cta">
+                <a href="mailto:vermaa.priya11@gmail.com" class="btn btn-primary">
+                    <span>✉</span> Get in Touch
+                </a>
+                <a href="https://linkedin.com/in/priya-vermaa/" target="_blank" class="btn btn-secondary">
+                    <span>↗</span> LinkedIn Profile
+                </a>
+            </div>
 
-        <!-- Experience Section -->
-        <section>
-            <h2>Professional Experience</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="experience-card">
-                        <div class="role-header">
-                            <div class="role-title">IT Systems Analyst</div>
-                            <div class="company-name">BuzzClan</div>
-                            <div class="duration">Recent</div>
-                        </div>
-                        
-                        <div class="context-block">
-                            <strong>Context:</strong>
-                            Large-scale migration from SharePoint On-Prem to SharePoint 365 for Minnesota State of Corrections — a state-level client requiring zero tolerance for data loss or functional gaps.
-                        </div>
-                        
-                        <p><strong>My Role:</strong> Partnered with developers to validate every aspect of the migration. Created comprehensive test cases, verified workflows, InfoPath forms, and data integrity post-migration.</p>
-                        
-                        <ul class="impact-list">
-                            <li>Designed test logic to ensure functional parity between on-prem and cloud environments</li>
-                            <li>Created workflows and validation processes using <span class="highlight-skill">SharePoint Designer</span></li>
-                            <li>Validated data accuracy, content structure, and business continuity</li>
-                            <li>Acted as quality assurance layer ensuring compliance and reliability for government client</li>
-                        </ul>
-                        
-                        <p style="margin-top: 20px;"><strong>Impact:</strong> Zero critical issues during go-live. Migration completed on schedule with full stakeholder confidence.</p>
-                    </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Years Experience</div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="experience-card">
-                        <div class="role-header">
-                            <div class="role-title">Operations Associate → Data Operations Analyst</div>
-                            <div class="company-name">Lantern</div>
-                            <div class="duration">~1 year</div>
-                        </div>
-                        
-                        <div class="context-block">
-                            <strong>Context:</strong>
-                            Healthcare analytics company delivering encrypted, sensitive client reports. Started handling escalations; promoted to Data Operations within 3 months.
-                        </div>
-                        
-                        <p><strong>Phase 1 — Operations:</strong></p>
-                        <ul class="impact-list">
-                            <li>Investigated database discrepancies and verified report delivery timelines</li>
-                            <li>Performed root cause analysis using <span class="highlight-skill">SQL queries</span></li>
-                            <li>Determined issue ownership (internal vs. client-side)</li>
-                        </ul>
-                        
-                        <p style="margin-top: 20px;"><strong>Phase 2 — Data Operations (Promoted):</strong></p>
-                        <ul class="impact-list">
-                            <li>Generated encrypted client reports manually, then co-created <span class="highlight-skill">SQL automation logic</span> to replace weekly manual processes</li>
-                            <li>Built internal dashboards to track active projects, current work, and future workload</li>
-                            <li>Took ownership of company's largest client within 3 months of promotion</li>
-                            <li>Managed direct client communication, debugged SQL logic, and coordinated with CST/marketing teams</li>
-                            <li>Used <span class="highlight-skill">Databricks</span> for data processing and analytics workflows</li>
-                        </ul>
-                        
-                        <p style="margin-top: 20px;"><strong>Impact:</strong> Reduced manual reporting effort by 70%, improved reliability, earned trust to manage high-stakes client relationships early.</p>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Records Analyzed</div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="experience-card">
-                        <div class="role-header">
-                            <div class="role-title">Analyst Intern</div>
-                            <div class="company-name">Tenet Health</div>
-                            <div class="duration">Summer 2023</div>
-                        </div>
-                        
-                        <p>Worked across Project Management, Cybersecurity, and ITSM teams as central coordination point.</p>
-                        
-                        <ul class="impact-list">
-                            <li>Built and analyzed workflows using <span class="highlight-skill">ServiceNow</span></li>
-                            <li>Performed data analysis using <span class="highlight-skill">Excel, Python, and SQL</span> to support project decisions</li>
-                            <li>Created charts and insights for retrospective project analysis</li>
-                            <li>Identified gaps, risks, and improvement opportunities across past initiatives</li>
-                        </ul>
-                        
-                        <p style="margin-top: 20px;"><strong>Impact:</strong> Helped three teams stay aligned through clear documentation and data-driven insights.</p>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Process Automation</div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="experience-card">
-                        <div class="role-header">
-                            <div class="role-title">Business Analyst</div>
-                            <div class="company-name">Wipro Limited</div>
-                            <div class="duration">~2.5 years</div>
-                        </div>
-                        
-                        <p>Worked across multiple teams in large enterprise environment focused on requirements, documentation, and stakeholder alignment.</p>
-                        
-                        <ul class="impact-list">
-                            <li>Gathered requirements and translated technical constraints into business-friendly explanations</li>
-                            <li>Created workflow documentation and process maps</li>
-                            <li>Supported automation initiatives and third-party coordination</li>
-                            <li>Contributed to cost savings through improved clarity and alignment</li>
-                        </ul>
-                        
-                        <p style="margin-top: 20px;"><strong>Impact:</strong> Learned how to bridge technical and business stakeholders in complex, multi-team environments.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="experience-card">
-                        <div class="role-header">
-                            <div class="role-title">Business & Sales Analysis</div>
-                            <div class="company-name">Kalachandji's Café</div>
-                            <div class="duration">Part-Time</div>
-                        </div>
-                        
-                        <p>Applied analytics in real-world small business context.</p>
-                        
-                        <ul class="impact-list">
-                            <li>Conducted sales, pricing, and inventory analysis using <span class="highlight-skill">Excel</span></li>
-                            <li>Compared inventory vs. sales vs. profit/loss to identify trends</li>
-                            <li>Partnered with café manager on pricing strategy and promotional ideas</li>
-                        </ul>
-                        
-                        <p style="margin-top: 20px;"><strong>Impact:</strong> Delivered actionable insights that directly influenced day-to-day business decisions.</p>
-                    </div>
+                <div class="stat">
+                    <div class="stat-number">$22M</div>
+                    <div class="stat-label">Revenue Protected</div>
                 </div>
             </div>
         </section>
 
         <!-- Role Fit Section -->
-        <section>
-            <h2>Why I Fit Multiple Analyst Roles</h2>
-            <p class="section-intro">Good analysts don't live in silos. The same mindset that helps me analyze data also helps me map processes and translate requirements.</p>
-            
-            <div class="role-fit-grid">
-                <div class="role-fit-card">
-                    <h3>Data Analyst</h3>
-                    <ul>
-                        <li>Write and debug SQL to investigate discrepancies</li>
-                        <li>Build Python scripts for data processing and reporting</li>
-                        <li>Create dashboards that teams actually use</li>
-                        <li>Use Databricks for analytics workflows</li>
-                        <li>Turn raw data into actionable insights</li>
-                    </ul>
+        <section id="roles">
+            <div class="section-header">
+                <div class="section-label">Why Me?</div>
+                <h2 class="section-title">The Right Fit for Your Team</h2>
+                <p class="section-subtitle">
+                    My experience spans the full spectrum of analytical roles, making me adaptable to your specific needs.
+                </p>
+            </div>
+
+            <div class="role-fit">
+                <div class="role-cards">
+                    <div class="role-card">
+                        <div class="role-icon">📊</div>
+                        <h3>Data Analyst</h3>
+                        <p>
+                            I excel at extracting insights from complex datasets, building automated ETL pipelines, 
+                            and creating visualizations that drive decisions. From SQL optimization to Tableau dashboards, 
+                            I turn raw data into business intelligence.
+                        </p>
+                        <div class="role-skills">
+                            <span class="role-skill">SQL</span>
+                            <span class="role-skill">Python</span>
+                            <span class="role-skill">Tableau</span>
+                            <span class="role-skill">Snowflake</span>
+                            <span class="role-skill">ETL</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">💼</div>
+                        <h3>Business Analyst</h3>
+                        <p>
+                            I translate complex data requirements into actionable specifications for engineering teams. 
+                            My experience gathering requirements from 70+ clients and reducing implementation cycles 
+                            showcases my stakeholder communication skills.
+                        </p>
+                        <div class="role-skills">
+                            <span class="role-skill">Requirements Gathering</span>
+                            <span class="role-skill">Stakeholder Management</span>
+                            <span class="role-skill">Process Mapping</span>
+                            <span class="role-skill">Agile</span>
+                        </div>
+                    </div>
+
+                    <div class="role-card">
+                        <div class="role-icon">⚙️</div>
+                        <h3>Operations Analyst</h3>
+                        <p>
+                            I identify operational inefficiencies and implement solutions that scale. From reducing 
+                            QA iterations by 60% to automating reporting workflows, I optimize processes for 
+                            measurable business impact.
+                        </p>
+                        <div class="role-skills">
+                            <span class="role-skill">Process Optimization</span>
+                            <span class="role-skill">Automation</span>
+                            <span class="role-skill">KPI Tracking</span>
+                            <span class="role-skill">Root Cause Analysis</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="role-fit-card">
-                    <h3>Business Analyst</h3>
-                    <ul>
-                        <li>Gather and document requirements clearly</li>
-                        <li>Translate between technical and business stakeholders</li>
-                        <li>Map workflows and identify process gaps</li>
-                        <li>Coordinate across multiple teams and functions</li>
-                        <li>Balance technical feasibility with business needs</li>
-                    </ul>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="section-header">
+                <div class="section-label">Career Journey</div>
+                <h2 class="section-title">Professional Experience</h2>
+            </div>
+
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <div class="exp-meta">
+                        <div class="exp-company">BuzzClan</div>
+                        <div class="exp-role">Data Analyst</div>
+                        <div class="exp-date">Aug 2025 – Present</div>
+                        <div class="exp-location">📍 Dallas, TX</div>
+                    </div>
+                    <div class="exp-content">
+                        <h4>SharePoint Migration & Analytics</h4>
+                        <ul class="exp-highlights">
+                            <li>Reduced QA iterations from 5 to 2 per website through data-driven insights and visualization dashboards</li>
+                            <li>Automated test case validation with SQL & Python, reducing manual testing effort by 70%</li>
+                            <li>Built Power BI dashboards tracking migration KPIs across 100+ websites</li>
+                            <li>Transformed manual processes into scalable data pipelines, reducing reporting turnaround by 60%</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="metric"><span class="metric-value">70%</span> Testing Reduction</span>
+                            <span class="metric"><span class="metric-value">60%</span> Faster Reporting</span>
+                            <span class="metric"><span class="metric-value">35%</span> Accuracy Improvement</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="role-fit-card">
-                    <h3>Operations Analyst</h3>
-                    <ul>
-                        <li>Design and implement process automation</li>
-                        <li>Build reporting pipelines using Zapier and SQL</li>
-                        <li>Handle escalations and root cause analysis</li>
-                        <li>Improve operational clarity and reliability</li>
-                        <li>Reduce manual effort through thoughtful automation</li>
-                    </ul>
+
+                <div class="exp-card">
+                    <div class="exp-meta">
+                        <div class="exp-company">Lantern</div>
+                        <div class="exp-role">Data Analyst</div>
+                        <div class="exp-date">Jun 2024 – Jun 2025</div>
+                        <div class="exp-location">📍 Dallas, TX</div>
+                    </div>
+                    <div class="exp-content">
+                        <h4>Healthcare Claims Analytics</h4>
+                        <ul class="exp-highlights">
+                            <li>Analyzed 500K+ healthcare claims records, reducing data resolution time by 75%</li>
+                            <li>Translated 20+ complex data requests into technical specifications, reducing implementation cycles from 8 to 5 weeks</li>
+                            <li>Built scalable Snowflake-backed reporting environments for 40+ healthcare clients</li>
+                            <li>Created custom Tableau dashboards achieving 99.5% accuracy for 15 clients</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="metric"><span class="metric-value">500K+</span> Records Analyzed</span>
+                            <span class="metric"><span class="metric-value">99.5%</span> Accuracy</span>
+                            <span class="metric"><span class="metric-value">40+</span> Clients Onboarded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-meta">
+                        <div class="exp-company">Tenet Healthcare</div>
+                        <div class="exp-role">Data Analyst Intern</div>
+                        <div class="exp-date">May 2023 – Aug 2023</div>
+                        <div class="exp-location">📍 Dallas, TX</div>
+                    </div>
+                    <div class="exp-content">
+                        <h4>Clinical Data Validation & Automation</h4>
+                        <ul class="exp-highlights">
+                            <li>Improved compliance accuracy from 92% to 99% through data validation against 200+ business rules</li>
+                            <li>Identified $312K in annual cost savings through variance and root-cause analysis</li>
+                            <li>Automated dashboards and reports, reducing reporting time from 2 days to 1 day</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="metric"><span class="metric-value">$312K</span> Cost Savings</span>
+                            <span class="metric"><span class="metric-value">99%</span> Compliance</span>
+                            <span class="metric"><span class="metric-value">50%</span> Faster Reports</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-meta">
+                        <div class="exp-company">Wipro</div>
+                        <div class="exp-role">Data Operations Analyst</div>
+                        <div class="exp-date">Sep 2020 – Jul 2022</div>
+                        <div class="exp-location">📍 Bangalore, India</div>
+                    </div>
+                    <div class="exp-content">
+                        <h4>Financial Analytics & Forecasting</h4>
+                        <ul class="exp-highlights">
+                            <li>Enhanced financial trend analysis accuracy by 12% using advanced SQL across 12+ source systems</li>
+                            <li>Built Power BI dashboards reducing report generation time from 2 days to 1 day</li>
+                            <li>Protected $22M in revenue through predictive analytics identifying 240 high-risk scenarios</li>
+                            <li>Developed forecasting models achieving 87% accuracy for 3-year performance projections</li>
+                        </ul>
+                        <div class="exp-metrics">
+                            <span class="metric"><span class="metric-value">$22M</span> Revenue Protected</span>
+                            <span class="metric"><span class="metric-value">87%</span> Forecast Accuracy</span>
+                            <span class="metric"><span class="metric-value">50K</span> Users Served</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section>
-            <h2>Skills & Tools</h2>
-            <p class="section-intro">I focus on using the right tools thoughtfully, not just knowing them.</p>
-            
+        <section id="skills">
+            <div class="section-header">
+                <div class="section-label">Technical Arsenal</div>
+                <h2 class="section-title">Skills & Technologies</h2>
+            </div>
+
             <div class="skills-container">
-                <div class="skill-group">
-                    <h3>Data & Analytics</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Databricks</span>
-                        <span class="skill-tag">Excel (Advanced)</span>
-                        <span class="skill-tag">Data Visualization</span>
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">💻</div>
+                        <h3>Programming & Databases</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">SQL</span>
+                        <span class="skill-tag highlight">Python</span>
+                        <span class="skill-tag">R</span>
+                        <span class="skill-tag highlight">MS SQL Server</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag highlight">Snowflake</span>
+                        <span class="skill-tag highlight">Databricks</span>
+                        <span class="skill-tag">DBT</span>
                     </div>
                 </div>
-                
-                <div class="skill-group">
-                    <h3>Automation & Systems</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Zapier</span>
-                        <span class="skill-tag">Process Automation</span>
-                        <span class="skill-tag">Workflow Design</span>
-                        <span class="skill-tag">Logic Creation</span>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">📈</div>
+                        <h3>Visualization & BI Tools</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Tableau</span>
+                        <span class="skill-tag highlight">Power BI</span>
+                        <span class="skill-tag">Looker</span>
+                        <span class="skill-tag">Amazon QuickSight</span>
+                        <span class="skill-tag highlight">Excel (Advanced)</span>
+                        <span class="skill-tag">Excel VBA</span>
                     </div>
                 </div>
-                
-                <div class="skill-group">
-                    <h3>Platforms & Tools</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">ServiceNow</span>
-                        <span class="skill-tag">SharePoint</span>
-                        <span class="skill-tag">SharePoint 365</span>
-                        <span class="skill-tag">Dashboard Tools</span>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">🔄</div>
+                        <h3>Analytics & Methods</h3>
                     </div>
-                </div>
-                
-                <div class="skill-group">
-                    <h3>Business & Communication</h3>
-                    <div class="skill-items">
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">ETL Pipelines</span>
+                        <span class="skill-tag">Data Modeling</span>
+                        <span class="skill-tag">Predictive Modeling</span>
+                        <span class="skill-tag">Statistical Analysis</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">Time Series Analysis</span>
+                        <span class="skill-tag">Data Validation</span>
                         <span class="skill-tag">Requirements Gathering</span>
-                        <span class="skill-tag">Process Mapping</span>
-                        <span class="skill-tag">Stakeholder Coordination</span>
-                        <span class="skill-tag">Client Communication</span>
-                        <span class="skill-tag">Technical Translation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">🛠️</div>
+                        <h3>Platforms & Automation</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">SAP</span>
+                        <span class="skill-tag">SAS</span>
+                        <span class="skill-tag highlight">Zapier</span>
+                        <span class="skill-tag">Workflow Automation</span>
+                        <span class="skill-tag">Process Optimization</span>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Education -->
-        <section>
-            <h2>Education</h2>
-            
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="degree-title">Master's in Information Technology & Management</div>
-                    <div class="institution">The University of Texas at Dallas</div>
-                    <p style="color: #6b7280;">Built on technical foundation with business and IT management focus. Learned to bridge technical execution with organizational strategy.</p>
+            <!-- AI Tools Section -->
+            <div class="ai-section">
+                <div class="ai-header">
+                    <h3>AI-Powered Productivity</h3>
+                    <span class="ai-badge">Prompt Engineering</span>
                 </div>
-                
-                <div class="education-card">
-                    <div class="degree-title">Bachelor's in Computer Science & Engineering</div>
-                    <div class="institution">Chitkara University, India</div>
-                    <p style="color: #6b7280;">Developed core programming, systems thinking, and problem-solving skills that continue to shape how I approach technical challenges.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    I leverage AI assistants to accelerate analysis, automate documentation, and enhance productivity. 
+                    Skilled in prompt engineering to extract maximum value from AI tools for complex analytical tasks.
+                </p>
+                <div class="ai-tools">
+                    <div class="ai-tool">
+                        <div class="ai-tool-icon">🤖</div>
+                        <h4>Claude</h4>
+                        <p>Analysis & Code</p>
+                    </div>
+                    <div class="ai-tool">
+                        <div class="ai-tool-icon">💬</div>
+                        <h4>ChatGPT</h4>
+                        <p>Documentation & Research</p>
+                    </div>
+                    <div class="ai-tool">
+                        <div class="ai-tool-icon">✨</div>
+                        <h4>Gemini</h4>
+                        <p>Multimodal Analysis</p>
+                    </div>
+                    <div class="ai-tool">
+                        <div class="ai-tool-icon">⚡</div>
+                        <h4>Prompt Engineering</h4>
+                        <p>Custom AI Workflows</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domain Knowledge -->
+            <div class="skill-category" style="margin-top: 2rem;">
+                <div class="skill-category-header">
+                    <div class="skill-category-icon">🏥</div>
+                    <h3>Domain Expertise</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Healthcare Analytics</span>
+                    <span class="skill-tag">Claims Data</span>
+                    <span class="skill-tag">HIPAA Compliance</span>
+                    <span class="skill-tag">Financial Services</span>
+                    <span class="skill-tag">Business Intelligence</span>
+                    <span class="skill-tag">Agile Methodology</span>
                 </div>
             </div>
         </section>
 
-        <!-- Achievements -->
-        <section>
-            <h2>Growth & Recognition</h2>
-            <div class="achievement-badges">
-                <span class="badge">Promoted within 3 months</span>
-                <span class="badge">Trusted with largest client account</span>
-                <span class="badge">Built automation reducing 70% manual effort</span>
-                <span class="badge">Led state-level migration validation</span>
-                <span class="badge">Managed direct client communication early</span>
+        <!-- Education Section -->
+        <section id="education">
+            <div class="section-header">
+                <div class="section-label">Academic Background</div>
+                <h2 class="section-title">Education</h2>
             </div>
-            <p style="text-align: center; margin-top: 30px; color: #6b7280; max-width: 700px; margin-left: auto; margin-right: auto;">What matters isn't just the titles — it's the moments when teams trusted me with sensitive work early, when clients felt comfortable reaching out directly, and when I could see the impact of bringing clarity to something previously unclear.</p>
-        </section>
 
-        <!-- Philosophy -->
-        <section>
-            <h2>How I Work</h2>
-            
-            <div class="philosophy-grid">
-                <div class="philosophy-card">
-                    <h3>On Responsibility</h3>
-                    <p>When something's in my hands, I treat it like it matters. I communicate proactively, ask for help when needed, and make sure stakeholders are never surprised.</p>
+            <div class="education-cards">
+                <div class="edu-card">
+                    <div class="edu-degree">Master of Science in Information Technology Management</div>
+                    <div class="edu-school">University of Texas at Dallas</div>
+                    <div class="edu-details">Dallas, Texas • May 2024</div>
                 </div>
-                
-                <div class="philosophy-card">
-                    <h3>On Learning</h3>
-                    <p>I don't need to know everything upfront, but I need to understand it before I execute. I ask questions, take notes, and connect dots until systems make sense.</p>
-                </div>
-                
-                <div class="philosophy-card">
-                    <h3>On Feedback</h3>
-                    <p>I appreciate teams that are direct. I'd rather know what needs improvement than guess. Feedback helps me recalibrate and do better work.</p>
-                </div>
-                
-                <div class="philosophy-card">
-                    <h3>Where I Thrive</h3>
-                    <p>Teams that value clarity, encourage questions, trust people with meaningful work, and care about both technical quality and human impact.</p>
+                <div class="edu-card">
+                    <div class="edu-degree">Bachelor of Technology in Computer Science & Engineering</div>
+                    <div class="edu-school">Chitkara University</div>
+                    <div class="edu-details">India • May 2021</div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <div class="cta-section">
-            <h2>Let's Connect</h2>
-            <p>I'm looking for teams where I can contribute thoughtful analysis, clear communication, and reliable execution — whether that's as a Data Analyst, Business Analyst, or Operations Analyst.</p>
-            <p>If you think I might be a good fit for your team, I'd love to hear from you.</p>
-            <div class="cta-buttons">
-                <a href="mailto:vermaa.priya11@gmail.com" class="cta-btn">Email Me</a>
-                <a href="https://www.linkedin.com/in/priya-vermaa/" class="cta-btn">LinkedIn</a>
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="contact-card">
+                <h2>Let's Connect</h2>
+                <p>
+                    I'm actively seeking Data Analyst, Business Analyst, and Operations Analyst opportunities 
+                    where I can leverage my skills to drive data-informed decisions.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:vermaa.priya11@gmail.com" class="contact-link">
+                        <span>✉️</span>
+                        vermaa.priya11@gmail.com
+                    </a>
+                    <a href="tel:9453084807" class="contact-link">
+                        <span>📱</span>
+                        (945) 308-4807
+                    </a>
+                    <a href="https://linkedin.com/in/priya-vermaa/" target="_blank" class="contact-link">
+                        <span>💼</span>
+                        LinkedIn
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Priya Verma. Built with passion for data.</p>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(10, 10, 15, 0.95)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 15, 0.8)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.exp-card, .role-card, .skill-category, .edu-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
